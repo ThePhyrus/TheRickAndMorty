@@ -10,6 +10,8 @@ import roman.bannikov.foundation.utils.viewModelCreator
 
 
 import roman.bannikov.foundation.views.FragmentsHolder
+import roman.bannikov.therickandmorty.databinding.ActivityMainBinding
+import roman.bannikov.therickandmorty.views.character.CharacterListFragment
 import roman.bannikov.therickandmorty.views.currentcolor.CurrentColorFragment
 
 /**
@@ -19,6 +21,7 @@ import roman.bannikov.therickandmorty.views.currentcolor.CurrentColorFragment
 class MainActivity : AppCompatActivity(), FragmentsHolder {
 
     private lateinit var navigator: StackFragmentNavigator
+    private lateinit var binding: ActivityMainBinding
 
     private val activityViewModel by viewModelCreator<ActivityScopeViewModel> {
         ActivityScopeViewModel(
@@ -29,7 +32,7 @@ class MainActivity : AppCompatActivity(), FragmentsHolder {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
         navigator = StackFragmentNavigator(
             activity = this,
@@ -44,6 +47,28 @@ class MainActivity : AppCompatActivity(), FragmentsHolder {
             initialScreenCreator = { CurrentColorFragment.Screen() }
         )
         navigator.onCreate(savedInstanceState)
+
+
+        initBottomNavigationViewSelector()
+
+    }
+
+    private fun initBottomNavigationViewSelector() {
+        binding.bottomNav.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.bottomMenuCharacters -> {
+                    navigator.launch(CharacterListFragment.Screen())
+                }
+                R.id.bottomMenuEpisodes -> {
+
+                }
+                R.id.bottomMenuLocations -> {
+
+                }
+            }
+
+            true
+        }
     }
 
     override fun onDestroy() {

@@ -16,5 +16,10 @@
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
     <string name="selected">Selected</string>
+    <string name="some_text">Some text</string>
+    <string name="name">Name</string>
+    <string name="species">Species</string>
+    <string name="gender">Gender</string>
+    <string name="status">Status</string>
     <!-- END FROM SKELETON-->
 </resources>
