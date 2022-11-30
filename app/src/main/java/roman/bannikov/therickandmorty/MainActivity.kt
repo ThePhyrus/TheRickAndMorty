@@ -22,17 +22,21 @@ import roman.bannikov.therickandmorty.views.currentcolor.CurrentColorFragment
 
 class MainActivity : AppCompatActivity(), FragmentsHolder {
 
+    //переменная для навигатора:
     private lateinit var navigator: StackFragmentNavigator
     private lateinit var binding: ActivityMainBinding
 
     /**
      * Это вью-модель именно MainActivity и из-за того, что навигация строится на базе фрагментов и
-     * должна быть доступна из других вью-моделей, что именно ActivityScopeViewModel и реализует
+     * должна быть доступна из других вью-моделей, птм что именно ActivityScopeViewModel и реализует
      * навигатор. А также и класс UiActions.
      * */
     private val activityViewModel by viewModelCreator<ActivityScopeViewModel> {
         ActivityScopeViewModel(
+            //передаём реализации:
             uiActions = AndroidUiActions(applicationContext),
+            //в навигатор передаём не StackFragmentNavigator, а IntermediateNavigator, который
+            // корректно работает с жизненным циклом:
             navigator = IntermediateNavigator()
         )
     }
@@ -41,6 +45,7 @@ class MainActivity : AppCompatActivity(), FragmentsHolder {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
+        //Создаём навигатор:
         navigator = StackFragmentNavigator(
             activity = this,
             containerId = R.id.fragmentContainer,
@@ -53,7 +58,7 @@ class MainActivity : AppCompatActivity(), FragmentsHolder {
             ),
             initialScreenCreator = { CurrentColorFragment.Screen() }
         )
-        navigator.onCreate(savedInstanceState)
+        navigator.onCreate(savedInstanceState) // создали навигатор, передали в него бандл
 
 
         initBottomNavigationViewSelector()
@@ -79,7 +84,7 @@ class MainActivity : AppCompatActivity(), FragmentsHolder {
     }
 
     override fun onDestroy() {
-        navigator.onDestroy()
+        navigator.onDestroy() //Убили навигатор
         super.onDestroy()
     }
 
@@ -91,13 +96,14 @@ class MainActivity : AppCompatActivity(), FragmentsHolder {
     override fun onResume() {
         super.onResume()
         // execute navigation actions only when activity is active
+        // обращаемся к навигатору и говорим, что целевой навигатор - это наш navigator
         activityViewModel.navigator.setTarget(navigator)
     }
 
     override fun onPause() {
         super.onPause()
         // postpone navigation actions if activity is not active
-        activityViewModel.navigator.setTarget(null)
+        activityViewModel.navigator.setTarget(null) // нету больше целевого навигатора (очистили)
     }
 
     override fun notifyScreenUpdates() {

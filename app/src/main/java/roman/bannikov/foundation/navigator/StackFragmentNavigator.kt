@@ -14,35 +14,55 @@ import roman.bannikov.foundation.views.BaseScreen
 import roman.bannikov.foundation.views.BaseScreen.Companion.ARG_SCREEN
 import roman.bannikov.foundation.views.HasScreenTitle
 
+/**
+ * Реальный навигатор, который будет выполнять все наши действия (реализация Navigator).
+ * Так как это всё таки пакет foundation, то весь код по реализации навигатора должен быть
+ * НЕЗАВИСИМЫМ от MainActivity, а значит конструктор этого класса... (смотри в конструктор).
+ * Здесь будет весь код по навигации. Работать будет на стороне активити (утечек памяти не будет)...
+ * надеюсь))
+ * */
+
+
 class StackFragmentNavigator(
+    //для работы с тулбаром и не только:
     private val activity: AppCompatActivity,
+    //чтобы знать контейнер, в который фрагменты складываться будут:
     @IdRes private val containerId: Int,
+
     private val defaultTitle: String,
     private val animations: Animations,
+    //чтобы инициализировать экран при старте приложения (активити не будет выполнять лишнего):
     private val initialScreenCreator: () -> BaseScreen
 ) : Navigator {
 
-    private var result: Event<Any>? = null
 
     override fun launch(screen: BaseScreen) {
         launchFragment(screen)//если второй аргумент не передать, что добавится в бэкстек
     }
 
+    //Сюда запишем какой-то результат из другого фрагмента (если надо будет, а пока null)
+    private var result: Event<Any>? = null
+
     override fun goBack(result: Any?) {
         /**
          * Для передачи результатов обратно в предыдущий экран.
-         * Когда вызывается этот метод, мы (какач-то вью-модель) можем (может) передать сюда
+         * Когда вызывается этот метод, мы (какая-то вью-модель) можем (может) передать сюда
          * результат. Например, так работает ChangeColorViewModel при вызове метода onSavePressed().
          * */
         if (result != null) {
             this.result = Event(result)
         }
-        activity.onBackPressed()
+        activity.onBackPressed() //fixme
     }
 
+    /**
+     * onCreate() и onDestroy() в данном классе будес считать методами жизненного цикла нашего
+     * навигатора. Они нужны потому, что навигатору нужно учитывать методы жизненного цикла
+     * активити (он же работает на стороне активити). Эт и методы будут вызываться из активити.
+     * */
     fun onCreate(savedInstanceState: Bundle?) {
         if (savedInstanceState == null) {
-            // define the initial screen that should be launched when app starts.
+            // определяет стартовый экран, который запустится при старте приложения.
             launchFragment(
                 screen = initialScreenCreator(),
                 addToBackStack = false
@@ -55,31 +75,16 @@ class StackFragmentNavigator(
         activity.supportFragmentManager.unregisterFragmentLifecycleCallbacks(fragmentCallbacks)
     }
 
-    fun notifyScreenUpdates() {
-        val f = activity.supportFragmentManager.findFragmentById(containerId)
 
-        if (activity.supportFragmentManager.backStackEntryCount > 0) {
-            // more than 1 screen -> show back button in the toolbar
-            activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        } else {
-            activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
-        }
 
-        if (f is HasScreenTitle && f.getScreenTitle() != null) {
-            // fragment has custom screen title -> display it
-            activity.supportActionBar?.title = f.getScreenTitle()
-        } else {
-            activity.supportActionBar?.title = defaultTitle
-        }
-    }
 
-    /**
-     * Метод для запуска фрагментов.
-     * Принимает два параметра (по умолчанию добавляет фрагменты в бэкстек:
-     * (addToBackStack: Boolean = true)).
-     *
-     * */
     private fun launchFragment(screen: BaseScreen, addToBackStack: Boolean = true) {
+        /**
+         * Метод для запуска фрагментов.
+         * Принимает два параметра (по умолчанию добавляет фрагменты в бэкстек:
+         * (addToBackStack: Boolean = true)).
+         *
+         * */
         /**
          * Следущая строка создаёт фрагмент из объекта типа скрин. Объекты этого типа (параметр
          * screen: BaseScreen) реализуют интефейс Serializable, а это значит, что они
@@ -113,6 +118,24 @@ class StackFragmentNavigator(
             .commit()
     }
 
+    fun notifyScreenUpdates() {
+        val f = activity.supportFragmentManager.findFragmentById(containerId)
+
+        if (activity.supportFragmentManager.backStackEntryCount > 0) {
+            // more than 1 screen -> show back button in the toolbar
+            activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        } else {
+            activity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        }
+
+        if (f is HasScreenTitle && f.getScreenTitle() != null) {
+            // fragment has custom screen title -> display it
+            activity.supportActionBar?.title = f.getScreenTitle()
+        } else {
+            activity.supportActionBar?.title = defaultTitle
+        }
+    }
+
     private fun publishResults(fragment: Fragment) {
         val result = result?.getValue() ?: return
         if (fragment is BaseFragment) {
@@ -122,7 +145,12 @@ class StackFragmentNavigator(
     }
 
     private val fragmentCallbacks = object : FragmentManager.FragmentLifecycleCallbacks() {
-        override fun onFragmentViewCreated(fm: FragmentManager, f: Fragment, v: View, savedInstanceState: Bundle?) {
+        override fun onFragmentViewCreated(
+            fm: FragmentManager,
+            f: Fragment,
+            v: View,
+            savedInstanceState: Bundle?
+        ) {
             notifyScreenUpdates()
             publishResults(f)
         }

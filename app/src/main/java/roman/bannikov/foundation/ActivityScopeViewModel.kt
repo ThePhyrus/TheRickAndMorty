@@ -14,9 +14,12 @@ import roman.bannikov.foundation.uiactions.UiActions
 /**
  * ActivityScopeViewModel используется как место для реализации Navigator и UiActions
  * */
+
+
+
 class ActivityScopeViewModel(
-    val uiActions: UiActions,
-    val navigator: IntermediateNavigator
+    val uiActions: UiActions, //зависимость
+    val navigator: IntermediateNavigator //зависимость
 ) : ViewModel(),
     Navigator by navigator,
     UiActions by uiActions {

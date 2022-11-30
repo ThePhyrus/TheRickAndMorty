@@ -9,6 +9,7 @@ import java.io.Serializable
  * Все аргументы скринов будут наследоваться от этого самого BaseScreen.
  */
 
+
 interface BaseScreen : Serializable {
 
     companion object {

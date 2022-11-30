@@ -4,8 +4,15 @@ import android.content.Context
 import android.widget.Toast
 
 /**
- * Android implementation of [UiActions]. Displaying simple toast message and getting string from resources.
+ * Android implementation of [UiActions]. Displaying simple toast message and getting string from
+ * resources.
  */
+
+/**
+ *
+ */
+
+
 class AndroidUiActions(
     private val appContext: Context
 ) : UiActions {

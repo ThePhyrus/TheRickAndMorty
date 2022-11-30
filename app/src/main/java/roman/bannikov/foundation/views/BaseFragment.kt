@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 
 /**
  * Base class for all fragments
+ * Нкаких зависимостей от MainActivity! )))
  */
 abstract class BaseFragment : Fragment() {
 
@@ -23,16 +24,13 @@ abstract class BaseFragment : Fragment() {
      */
     fun notifyScreenUpdates() {
         /**
-         * Так как у нас single-activity приложение, то можно просто сделать так:
+         * В идеале должен быть создан и всё-таки был создан отдельный интерфейс FragmentsHolder и
+         * на нём вызывается notifyScreenUpdates().
+         * Тогда, если нам вдруг понадобиться создавать ещё одну активити, то она будет наследовать
+         * этот интерфейс. Всё остальное не поломается.
          * */
         (requireActivity() as FragmentsHolder).notifyScreenUpdates()
 
-        /**
-         * В идеале должен быть создан отдельный интерфейс и на нём должен был бы
-         * вызываться notifyScreenUpdates().
-         *
-         * Но из-зи того, что у нас ТОЛЬКО одна активити и фрагмент может находиться
-         * ТОЛЬКО в MainActivity, то в таком методе никогда и никакой ошибки не случится.
-         * */
+
     }
 }
