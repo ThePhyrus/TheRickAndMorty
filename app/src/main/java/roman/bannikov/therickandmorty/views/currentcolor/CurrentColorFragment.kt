@@ -12,8 +12,13 @@ import roman.bannikov.therickandmorty.databinding.FragmentCurrentColorBinding
 
 class CurrentColorFragment : BaseFragment() {
 
+    /**
+     * Стартовы фрагмент
+     * */
+
+
     // no arguments for this screen
-    class Screen : BaseScreen
+    class Screen : BaseScreen // определяется скрин для этого фрагмента
 
     override val viewModel by screenViewModel<CurrentColorViewModel>()
 

@@ -12,6 +12,7 @@ import roman.bannikov.therickandmorty.model.colors.NamedColor
 import roman.bannikov.therickandmorty.views.changecolor.ChangeColorFragment
 
 class CurrentColorViewModel(
+    //перечисляем зависимости этой вью-модели
     private val navigator: Navigator,
     private val uiActions: UiActions,
     private val colorsRepository: ColorsRepository
@@ -38,6 +39,11 @@ class CurrentColorViewModel(
     // --- example of listening results directly from the screen
 
     override fun onResult(result: Any) {
+        /**
+         * Пример слушанья результата полученного во вором экране.
+         * То есть, когда во втором экране выбрали нужный цвет и нажали на кнопку save, второй
+         * экран посылает результат, а этот экран его получает.
+         * */
         super.onResult(result)
         if (result is NamedColor) {
             val message = uiActions.getString(R.string.changed_color, result.name)

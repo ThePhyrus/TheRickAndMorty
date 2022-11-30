@@ -4,7 +4,12 @@ import roman.bannikov.foundation.views.BaseScreen
 
 /**
  * Navigation for your application
+ *
+ * Примитивная стековая навигация, котрая позволяет запускать экраны, передавая в них каки-то
+ * результаты, а также возвращаться на предыдущий экран и отдавать каки-то результаты обратно.
  */
+
+
 interface Navigator {
 
     /**

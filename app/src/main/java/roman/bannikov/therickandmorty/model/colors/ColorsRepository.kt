@@ -8,6 +8,12 @@ typealias ColorListener = (NamedColor) -> Unit
  * Repository interface example.
  *
  * Provides access to the available colors and current selected color.
+ *
+ * Наследуется от класса Repository из пакета foundation и поределяет список действий, полей,
+ * будут доступны для этого репозитория. Именно этот (ColorsRepository) интерфейс будет
+ * использоваться для конструктора вью-модели, которая будет работать с ColorsRepository. А уже
+ * конкретная реализация ColorsRepository (пока одна и называется InMemoryColorsRepository)
+ * реализует interface ColorsRepository.
  */
 interface ColorsRepository : Repository {
 

@@ -25,10 +25,15 @@ class StackFragmentNavigator(
     private var result: Event<Any>? = null
 
     override fun launch(screen: BaseScreen) {
-        launchFragment(screen)
+        launchFragment(screen)//если второй аргумент не передать, что добавится в бэкстек
     }
 
     override fun goBack(result: Any?) {
+        /**
+         * Для передачи результатов обратно в предыдущий экран.
+         * Когда вызывается этот метод, мы (какач-то вью-модель) можем (может) передать сюда
+         * результат. Например, так работает ChangeColorViewModel при вызове метода onSavePressed().
+         * */
         if (result != null) {
             this.result = Event(result)
         }
@@ -68,14 +73,35 @@ class StackFragmentNavigator(
         }
     }
 
+    /**
+     * Метод для запуска фрагментов.
+     * Принимает два параметра (по умолчанию добавляет фрагменты в бэкстек:
+     * (addToBackStack: Boolean = true)).
+     *
+     * */
     private fun launchFragment(screen: BaseScreen, addToBackStack: Boolean = true) {
-        // as screen classes are inside fragments -> we can create fragment directly from screen
+        /**
+         * Следущая строка создаёт фрагмент из объекта типа скрин. Объекты этого типа (параметр
+         * screen: BaseScreen) реализуют интефейс Serializable, а это значит, что они
+         * могут быть аргументами экрана. Именно поэтому их можно сложить в bundle и потом передать
+         * фрагменту в качестве аргументов. Такой подход позволяет избавиться от ручного
+         * опроделения метода newInstance(). Классы скринов определяются в самих фрагментах.
+         * Вью-модели будут работать только со скринами, поэтому не будут зависеть от фрагментов.
+         * */
+
+        /**
+         * Можно сделать вывод, что для того, чтобы передать какие-то аргументы дальше в новый
+         * экран, нам нужно просто создать скрин, внутри которого описать все необходимые аргументы.
+         * */
         val fragment = screen.javaClass.enclosingClass.newInstance() as Fragment
         // set screen object as fragment's argument
         fragment.arguments = bundleOf(ARG_SCREEN to screen)
 
+        // Создаём транзакцию:
         val transaction = activity.supportFragmentManager.beginTransaction()
+        // Если addToBackStack = true, то добавляем в бэкстек:
         if (addToBackStack) transaction.addToBackStack(null)
+        // Добавляем анимацию (опционально)
         transaction
             .setCustomAnimations(
                 animations.enterAnim,

@@ -18,11 +18,18 @@ import roman.bannikov.therickandmorty.views.currentcolor.CurrentColorFragment
  * This application is a single-activity app. MainActivity is a container
  * for all screens.
  */
+
+
 class MainActivity : AppCompatActivity(), FragmentsHolder {
 
     private lateinit var navigator: StackFragmentNavigator
     private lateinit var binding: ActivityMainBinding
 
+    /**
+     * Это вью-модель именно MainActivity и из-за того, что навигация строится на базе фрагментов и
+     * должна быть доступна из других вью-моделей, что именно ActivityScopeViewModel и реализует
+     * навигатор. А также и класс UiActions.
+     * */
     private val activityViewModel by viewModelCreator<ActivityScopeViewModel> {
         ActivityScopeViewModel(
             uiActions = AndroidUiActions(applicationContext),
@@ -94,6 +101,12 @@ class MainActivity : AppCompatActivity(), FragmentsHolder {
     }
 
     override fun notifyScreenUpdates() {
+        /**
+         * Отвечает за корректное отображение toolBar,
+         * частично отвечает за навигацию.
+         * Вызывется каждый раз, когда какой-то экран становится активным.
+         * Плюс этот метод можно вызвать из любого фрагмента, который наследует BaseFragment
+         * */
         navigator.notifyScreenUpdates()
     }
 

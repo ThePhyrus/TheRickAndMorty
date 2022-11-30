@@ -13,6 +13,7 @@ import roman.bannikov.therickandmorty.model.colors.NamedColor
 import roman.bannikov.therickandmorty.views.changecolor.ChangeColorFragment.Screen
 
 class ChangeColorViewModel(
+    //перечисляем зависимости этой вью-модели
     screen: Screen,
     private val navigator: Navigator,
     private val uiActions: UiActions,
@@ -47,7 +48,7 @@ class ChangeColorViewModel(
         val currentColorId = _currentColorId.value ?: return
         val currentColor = colorsRepository.getById(currentColorId)
         colorsRepository.currentColor = currentColor
-        navigator.goBack(result = currentColor)
+        navigator.goBack(result = currentColor)//этой строчкой вернём резульат в предыдущий экран
     }
 
     fun onCancelPressed() {

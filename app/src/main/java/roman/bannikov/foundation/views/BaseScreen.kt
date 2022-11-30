@@ -5,6 +5,8 @@ import java.io.Serializable
 /**
  * Base class for defining screen arguments.
  * Please note that all fields inside the screen should be serializable.
+ *
+ * Все аргументы скринов будут наследоваться от этого самого BaseScreen.
  */
 
 interface BaseScreen : Serializable {

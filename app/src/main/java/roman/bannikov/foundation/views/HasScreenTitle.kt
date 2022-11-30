@@ -9,6 +9,12 @@ package roman.bannikov.foundation.views
  */
 interface HasScreenTitle {
 
+    /**
+     * interface HasScreenTitle может быть использован любым фрагментом, если этот фрагмент хочет
+     * показать в тулбаре какой-то свой заголовок отличный от стандартного.
+     * В данном случае мы его используем в ChangeColorFragment.
+     * */
+
     fun getScreenTitle(): String?
 
 }

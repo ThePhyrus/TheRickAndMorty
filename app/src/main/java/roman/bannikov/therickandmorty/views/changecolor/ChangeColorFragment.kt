@@ -21,19 +21,32 @@ import roman.bannikov.therickandmorty.databinding.FragmentChangeColorBinding
  * 3) Chosen color is saved only after pressing "Save" button
  * 4) The current choice is saved via [SavedStateHandle] (see [ChangeColorViewModel])
  */
+
+/**
+ * Запускается из стартового фрагмента, имеет аргументы
+ * */
 class ChangeColorFragment : BaseFragment(), HasScreenTitle {
 
     /**
      * This screen has 1 argument: color ID to be displayed as selected.
+     * Этот скрин имеет один аргумент: id цвета, который надо отметить выбранным.
      */
     class Screen(
+        //описывем аргументы (только те типы данных, которые можно сериализовать:
         val currentColorId: Long
     ) : BaseScreen
 
+
+    /**
+     *Вот так создайтся вью-модель для фрагмента, используя BaseFragment.screenViewModel().
+     * Нужно просто указать название класса, который будет работать с фрагментом. В данном случае
+     * с фрагментом ChangeColorFragment будет работать ChangeColorViewModel
+     * */
     override val viewModel by screenViewModel<ChangeColorViewModel>()
 
     /**
      * Example of dynamic screen title
+     * Пример динамической смены заголовка экрана
      */
     override fun getScreenTitle(): String? = viewModel.screenTitle.value
 

@@ -4,6 +4,12 @@ import android.graphics.Color
 
 /**
  * Simple in-memory implementation of [ColorsRepository]
+ *
+ * Вся реализация интерфейса ColorsRepository пока сводится к тому, что все цвета пока просто
+ * хранятся в памяти приложения. Но о данной конкретной реализации интерфейса ColorsRepository
+ * вью-модель абсолютно ничего не знает. Вью-модель знает только сам интерфейс ColorsRepository, а
+ * какая реализация будет у интерфейса ColorsRepository определяется в классе App.
+ *
  */
 class InMemoryColorsRepository : ColorsRepository {
 
@@ -32,7 +38,7 @@ class InMemoryColorsRepository : ColorsRepository {
         return AVAILABLE_COLORS.first { it.id == id }
     }
 
-    companion object {
+    companion object { //тут цвета хранятся
         private val AVAILABLE_COLORS = listOf(
             NamedColor(1, "Red", Color.RED),
             NamedColor(2, "Green", Color.GREEN),
