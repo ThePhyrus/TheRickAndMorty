@@ -12,7 +12,10 @@ import roman.bannikov.foundation.uiactions.UiActions
  */
 
 /**
- * ActivityScopeViewModel используется как место для реализации Navigator и UiActions
+ * ActivityScopeViewModel используется как место для реализации Navigator и UiActions.
+ * Всё, что делает этот класс - содержит ссылки, которые находятся в одном из скоупов. Эти ссылки
+ * потом пробрасываются во вью-модели фрагментов, если это нужно.
+ * Реализации UiActions и Navigator разделены
  * */
 
 

@@ -9,7 +9,7 @@ import android.widget.Toast
  */
 
 /**
- *
+ * Реализация UiActions
  */
 
 

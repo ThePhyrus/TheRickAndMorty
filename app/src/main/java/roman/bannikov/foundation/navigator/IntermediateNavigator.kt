@@ -25,6 +25,12 @@ class IntermediateNavigator : Navigator {
     private val targetNavigator = ResourceActions<Navigator>()
 
     override fun launch(screen: BaseScreen) = targetNavigator {
+        /**
+         * Когда из какого-то фрагмента мы вызываем метод launch(), то вызывается именно этот
+         * метод. Если активити активна, то метод сразу передаст вызов тому навигатору, который
+         * отвечает за навигацию. Если неактивна, то отложит это действие в очередь и отдаст
+         * уже когда активити будет активна.
+         * */
         it.launch(screen) //передаются аргументы
     }
 

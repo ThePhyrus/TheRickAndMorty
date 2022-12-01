@@ -21,6 +21,7 @@ class App : Application(), BaseApplication {
     /**
      * Place your repositories here, now we have only 1 repository
      */
+    //переопределяем из BaseApplication:
     override val repositories: List<Repository> = listOf<Repository>(
         InMemoryColorsRepository() //Можно добавить ещё репозитории через запятую
     )
