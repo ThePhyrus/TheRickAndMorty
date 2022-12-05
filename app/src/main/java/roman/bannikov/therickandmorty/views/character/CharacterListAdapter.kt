@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import roman.bannikov.therickandmorty.databinding.ItemCharacterCardBinding
-import roman.bannikov.therickandmorty.model.character.TheCharacter
+import roman.bannikov.therickandmorty.models.character.Character
 import roman.bannikov.therickandmorty.views.character.CharacterListAdapter.Listener
 
 
@@ -17,14 +17,14 @@ class CharacterListAdapter(
     private val listener: Listener
 ) : RecyclerView.Adapter<CharacterListAdapter.Holder>(), View.OnClickListener {
 
-    var items: List<TheCharacter> = emptyList()
+    var items: List<Character> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
     override fun onClick(v: View) {
-        val item = v.tag as TheCharacter
+        val item = v.tag as Character
         listener.onCardClick(item)
     }
 
@@ -56,7 +56,7 @@ class CharacterListAdapter(
          * Called when user chooses the specified color
          * @param namedColor color chosen by the user
          */
-        fun onCardClick(character: TheCharacter)
+        fun onCardClick(character: Character)
     }
 
 }

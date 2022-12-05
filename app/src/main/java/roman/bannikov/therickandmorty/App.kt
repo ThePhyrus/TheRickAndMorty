@@ -3,7 +3,8 @@ package roman.bannikov.therickandmorty
 import android.app.Application
 import roman.bannikov.foundation.BaseApplication
 import roman.bannikov.foundation.model.Repository
-import roman.bannikov.therickandmorty.model.colors.InMemoryColorsRepository
+import roman.bannikov.therickandmorty.models.character.InMemoryCharacterRepository
+
 
 /**
  * Точка входа в приложение (прописывается в манифесте). Этот класс являестся "singletone scope",
@@ -23,7 +24,7 @@ class App : Application(), BaseApplication {
      */
     //переопределяем из BaseApplication:
     override val repositories: List<Repository> = listOf<Repository>(
-        InMemoryColorsRepository() //Можно добавить ещё репозитории через запятую
+        InMemoryCharacterRepository() //Можно добавить ещё репозитории через запятую
     )
 
 }

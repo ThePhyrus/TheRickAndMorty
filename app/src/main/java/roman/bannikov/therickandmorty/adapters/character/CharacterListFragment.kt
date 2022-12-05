@@ -1,4 +1,4 @@
-package roman.bannikov.therickandmorty.views.character
+package roman.bannikov.therickandmorty.adapters.character
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,8 +10,7 @@ import roman.bannikov.foundation.views.BaseScreen
 import roman.bannikov.foundation.views.screenViewModel
 import roman.bannikov.therickandmorty.R
 import roman.bannikov.therickandmorty.databinding.FragmentCharacterListBinding
-import roman.bannikov.therickandmorty.databinding.FragmentCurrentColorBinding
-import roman.bannikov.therickandmorty.views.currentcolor.CurrentColorViewModel
+import roman.bannikov.therickandmorty.viewmodels.character.CharacterListViewModel
 
 class CharacterListFragment : BaseFragment() {
 
@@ -23,9 +22,9 @@ class CharacterListFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val binding = FragmentCharacterListBinding.inflate(inflater, container, false)
 
-        viewModel.currentColor.observe(viewLifecycleOwner) {
+/*        viewModel.currentColor.observe(viewLifecycleOwner) {
             binding.tv.text = getString(R.string.some_text)
-        }
+        }*/
 
 
 

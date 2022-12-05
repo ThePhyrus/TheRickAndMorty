@@ -1,4 +1,4 @@
-package roman.bannikov.therickandmorty
+package roman.bannikov.therickandmorty.views
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -10,9 +10,10 @@ import roman.bannikov.foundation.utils.viewModelCreator
 
 
 import roman.bannikov.foundation.views.FragmentsHolder
+import roman.bannikov.therickandmorty.R
 import roman.bannikov.therickandmorty.databinding.ActivityMainBinding
-import roman.bannikov.therickandmorty.views.character.CharacterListFragment
-import roman.bannikov.therickandmorty.views.currentcolor.CurrentColorFragment
+import roman.bannikov.therickandmorty.adapters.character.CharacterListFragment
+
 
 /**
  * This application is a single-activity app. MainActivity is a container
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity(), FragmentsHolder {
                 popEnterAnim = R.anim.pop_enter,
                 popExitAnim = R.anim.pop_exit
             ),
-            initialScreenCreator = { CurrentColorFragment.Screen() }
+            initialScreenCreator = { CharacterListFragment.Screen() }
         )
         navigator.onCreate(savedInstanceState) // создали навигатор, передали в него бандл
 
