@@ -109,7 +109,7 @@ Rick and Morty
         1.8 - Детали персонажа
     Детали о персонаже возможно получить с помощью следующего
     запроса:
-    https://rickandmortyapi.com/documentation/#get-a-single-character
+    https://rickandmortyapi.com/documentation/get-a-single-character
     На данном экране необходимо отобразить всю информацию,
     которая приходит нам с сервера и может быть полезна
     пользователю.

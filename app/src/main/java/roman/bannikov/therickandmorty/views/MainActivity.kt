@@ -12,6 +12,7 @@ import roman.bannikov.foundation.utils.viewModelCreator
 import roman.bannikov.foundation.views.FragmentsHolder
 import roman.bannikov.therickandmorty.R
 import roman.bannikov.therickandmorty.databinding.ActivityMainBinding
+import roman.bannikov.therickandmorty.views.fragments.LocationListFragment
 import roman.bannikov.therickandmorty.views.fragments.character.CharacterListFragment
 import roman.bannikov.therickandmorty.views.fragments.episode.EpisodeListFragment
 
@@ -79,10 +80,9 @@ class MainActivity : AppCompatActivity(), FragmentsHolder {
                     navigator.launch(EpisodeListFragment.EpisodeListScreen())
                 }
                 R.id.bottomMenuLocations -> {
-
+                    navigator.launch(LocationListFragment.LocationListScreen())
                 }
             }
-
             true
         }
     }
@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity(), FragmentsHolder {
         activityViewModel.navigator.setTarget(null) // нету больше целевого навигатора (очистили)
     }
 
-    override fun notifyScreenUpdates() {
+    override fun notifyScreenUpdates() {//fixme
         /**
          * Отвечает за корректное отображение toolBar,
          * частично отвечает за навигацию.

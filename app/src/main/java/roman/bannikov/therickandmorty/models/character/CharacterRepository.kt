@@ -29,7 +29,7 @@ interface CharacterRepository : Repository {
     /**
      * Get the character by its ID
      */
-    fun getById(id: Long): CharacterM
+    fun getById(id: Int): CharacterM
 
     /**
      * Listen for the changes.

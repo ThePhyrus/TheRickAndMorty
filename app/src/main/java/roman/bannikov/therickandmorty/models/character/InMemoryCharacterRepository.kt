@@ -11,7 +11,7 @@ package roman.bannikov.therickandmorty.models.character
  */
 class InMemoryCharacterRepository : CharacterRepository {
 
-   override var selectedCharacterM: CharacterM = SAVED_CHARACTERMS[0]
+    override var selectedCharacterM: CharacterM = SAVED_CHARACTERMS[0]
         set(value) {
             if (field != value) {
                 field = value
@@ -22,9 +22,21 @@ class InMemoryCharacterRepository : CharacterRepository {
     private val listeners = mutableSetOf<CharacterListener>()
 
 
+
     companion object { //тут персонажи хранятся
+
+
         private val SAVED_CHARACTERMS =
-            listOf(CharacterM(id = 100L, "Roman", "Human", "Male", "Alive"))
+            listOf(
+                CharacterM(
+                    id = 100,
+                    name = "Roman",
+                    species = "Human",
+                    gender = "Male",
+                    status = "Alive",
+                    image = "imageUrl",
+                    )
+            )
     }
 
 
@@ -32,7 +44,7 @@ class InMemoryCharacterRepository : CharacterRepository {
         return SAVED_CHARACTERMS
     }
 
-    override fun getById(id: Long): CharacterM {
+    override fun getById(id: Int): CharacterM {
         return SAVED_CHARACTERMS.first { it.id == id }
     }
 
