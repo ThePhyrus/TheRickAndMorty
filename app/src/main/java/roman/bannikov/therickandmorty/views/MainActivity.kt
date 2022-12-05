@@ -20,6 +20,8 @@ import roman.bannikov.therickandmorty.adapters.character.CharacterListFragment
  * for all screens.
  */
 
+//fixme не работает srCharacters при layoutManager Grid
+
 
 class MainActivity : AppCompatActivity(), FragmentsHolder {
 

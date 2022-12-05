@@ -1,15 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/margin"
+    android:background="@color/mr_main_background_color"
+    android:orientation="vertical">
 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/svCharacter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        app:iconifiedByDefault="false"
+        app:layout_constraintEnd_toStartOf="@id/btnOpenFilterCharacter"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:queryHint="Search something"
+        app:searchHintIcon="@drawable/ic_filter" />
+
+    <Button
+        android:id="@+id/btnOpenFilterCharacter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:text="Filter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/svCharacter"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:id="@+id/tv"
+        android:id="@+id/tvFragmentLabelCharacter"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView in CharacterListFragment"
+        android:layout_margin="@dimen/margin"
+        android:gravity="center"
+        android:text="Fragment label"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@id/svCharacter" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srCharacters"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvFragmentLabelCharacter">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCharacters"
+            android:layout_width="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:spanCount="2"
+            tools:listitem="@layout/item_character_card"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/srCharacters" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <ProgressBar
+        android:id="@+id/pbCharacters"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:foregroundGravity="center"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
