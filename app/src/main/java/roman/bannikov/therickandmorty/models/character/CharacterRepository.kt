@@ -3,7 +3,7 @@ package roman.bannikov.therickandmorty.models.character
 import roman.bannikov.foundation.model.Repository
 
 
-typealias CharacterListener = (Character) -> Unit
+typealias CharacterListener = (CharacterM) -> Unit
 
 
 /**
@@ -19,17 +19,17 @@ typealias CharacterListener = (Character) -> Unit
  */
 interface CharacterRepository : Repository {
 
-    var selectedCharacter: Character
+    var selectedCharacterM: CharacterM
 
     /**
      * Get the list of all characters that may be chosen by the user.
      */
-    fun getCharacterList(): List<Character>
+    fun getCharacterList(): List<CharacterM>
 
     /**
      * Get the character by its ID
      */
-    fun getById(id: Long): Character
+    fun getById(id: Long): CharacterM
 
     /**
      * Listen for the changes.

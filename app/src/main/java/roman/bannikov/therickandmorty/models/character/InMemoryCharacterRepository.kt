@@ -1,7 +1,5 @@
 package roman.bannikov.therickandmorty.models.character
 
-import android.graphics.Color
-
 /**
  * Simple in-memory implementation of [CharacterRepository]
  *
@@ -13,7 +11,7 @@ import android.graphics.Color
  */
 class InMemoryCharacterRepository : CharacterRepository {
 
-   override var selectedCharacter: Character = SAVED_CHARACTERS[0]
+   override var selectedCharacterM: CharacterM = SAVED_CHARACTERMS[0]
         set(value) {
             if (field != value) {
                 field = value
@@ -25,22 +23,22 @@ class InMemoryCharacterRepository : CharacterRepository {
 
 
     companion object { //тут персонажи хранятся
-        private val SAVED_CHARACTERS =
-            listOf(Character(id = 100L, "Roman", "Human", "Male", "Alive"))
+        private val SAVED_CHARACTERMS =
+            listOf(CharacterM(id = 100L, "Roman", "Human", "Male", "Alive"))
     }
 
 
-    override fun getCharacterList(): List<Character> {
-        return SAVED_CHARACTERS
+    override fun getCharacterList(): List<CharacterM> {
+        return SAVED_CHARACTERMS
     }
 
-    override fun getById(id: Long): Character {
-        return SAVED_CHARACTERS.first { it.id == id }
+    override fun getById(id: Long): CharacterM {
+        return SAVED_CHARACTERMS.first { it.id == id }
     }
 
     override fun addListener(listener: CharacterListener) {
         listeners += listener
-        listener(selectedCharacter)
+        listener(selectedCharacterM)
     }
 
     override fun removeListener(listener: CharacterListener) {

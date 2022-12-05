@@ -9,62 +9,62 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.SearchView
-        android:id="@+id/svCharacter"
+        android:id="@+id/svEpisode"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
         app:iconifiedByDefault="false"
-        app:layout_constraintEnd_toStartOf="@id/btnOpenFilterCharacter"
+        app:layout_constraintEnd_toStartOf="@id/btnOpenFilterEpisode"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:queryHint="Search something"
         app:searchHintIcon="@drawable/ic_filter" />
 
     <Button
-        android:id="@+id/btnOpenFilterCharacter"
+        android:id="@+id/btnOpenFilterEpisode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
         android:text="Filter"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/svCharacter"
+        app:layout_constraintStart_toEndOf="@id/svEpisode"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvFragmentLabelCharacter"
+        android:id="@+id/tvFragmentLabelEpisode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
         android:gravity="center"
         android:text="Fragment label"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@id/svCharacter" />
+        app:layout_constraintTop_toBottomOf="@id/svEpisode" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/srCharacters"
+        android:id="@+id/srEpisodes"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvFragmentLabelCharacter">
+        app:layout_constraintTop_toBottomOf="@id/tvFragmentLabelEpisode">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCharacters"
+            android:id="@+id/rvEpisodes"
             android:layout_width="match_parent"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:spanCount="2"
-            tools:listitem="@layout/item_character_card"
+            tools:listitem="@layout/item_episode_card"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/srCharacters" />
+            app:layout_constraintTop_toBottomOf="@id/srEpisodes" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <ProgressBar
-        android:id="@+id/pbCharacters"
+        android:id="@+id/pbEpisodes"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,13 +76,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnShowDetails"
+        android:id="@+id/btnShowEpisodeDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="details"
-        app:layout_constraintBottom_toBottomOf="@+id/srCharacters"
-        app:layout_constraintEnd_toEndOf="@+id/pbCharacters"
-        app:layout_constraintStart_toStartOf="@+id/pbCharacters"
-        app:layout_constraintTop_toBottomOf="@+id/pbCharacters" />
+        app:layout_constraintBottom_toBottomOf="@+id/srEpisodes"
+        app:layout_constraintEnd_toEndOf="@+id/pbEpisodes"
+        app:layout_constraintStart_toStartOf="@+id/pbEpisodes"
+        app:layout_constraintTop_toBottomOf="@+id/pbEpisodes" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,12 +1,12 @@
-package roman.bannikov.therickandmorty.views.character
+package roman.bannikov.therickandmorty.adapters.character
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import roman.bannikov.therickandmorty.databinding.ItemCharacterCardBinding
-import roman.bannikov.therickandmorty.models.character.Character
-import roman.bannikov.therickandmorty.views.character.CharacterListAdapter.Listener
+import roman.bannikov.therickandmorty.models.character.CharacterM
+import roman.bannikov.therickandmorty.adapters.character.CharacterListAdapter.Listener
 
 
 /**
@@ -17,14 +17,14 @@ class CharacterListAdapter(
     private val listener: Listener
 ) : RecyclerView.Adapter<CharacterListAdapter.Holder>(), View.OnClickListener {
 
-    var items: List<Character> = emptyList()
+    var items: List<CharacterM> = emptyList()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
     override fun onClick(v: View) {
-        val item = v.tag as Character
+        val item = v.tag as CharacterM
         listener.onCardClick(item)
     }
 
@@ -56,7 +56,7 @@ class CharacterListAdapter(
          * Called when user chooses the specified color
          * @param namedColor color chosen by the user
          */
-        fun onCardClick(character: Character)
+        fun onCardClick(characterM: CharacterM)
     }
 
 }

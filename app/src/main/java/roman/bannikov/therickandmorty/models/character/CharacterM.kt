@@ -1,6 +1,6 @@
 package roman.bannikov.therickandmorty.models.character
 
-data class Character(
+data class CharacterM(
     val id: Long,
     val name:String,
     val species:String,

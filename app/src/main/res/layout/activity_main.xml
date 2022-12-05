@@ -7,7 +7,7 @@
     android:background="@color/mr_main_background_color"
     tools:context=".views.MainActivity">
 
-    <androidx.fragment.app.FragmentContainerView
+    <FrameLayout
 
         android:id="@+id/fragmentContainer"
         android:layout_width="0dp"

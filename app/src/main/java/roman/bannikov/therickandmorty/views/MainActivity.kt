@@ -12,7 +12,8 @@ import roman.bannikov.foundation.utils.viewModelCreator
 import roman.bannikov.foundation.views.FragmentsHolder
 import roman.bannikov.therickandmorty.R
 import roman.bannikov.therickandmorty.databinding.ActivityMainBinding
-import roman.bannikov.therickandmorty.adapters.character.CharacterListFragment
+import roman.bannikov.therickandmorty.views.fragments.character.CharacterListFragment
+import roman.bannikov.therickandmorty.views.fragments.episode.EpisodeListFragment
 
 
 /**
@@ -59,7 +60,7 @@ class MainActivity : AppCompatActivity(), FragmentsHolder {
                 popEnterAnim = R.anim.pop_enter,
                 popExitAnim = R.anim.pop_exit
             ),
-            initialScreenCreator = { CharacterListFragment.Screen() }
+            initialScreenCreator = { CharacterListFragment.CharacterListScreen() }
         )
         navigator.onCreate(savedInstanceState) // создали навигатор, передали в него бандл
 
@@ -72,10 +73,10 @@ class MainActivity : AppCompatActivity(), FragmentsHolder {
         binding.bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.bottomMenuCharacters -> {
-                    navigator.launch(CharacterListFragment.Screen())
+                    navigator.launch(CharacterListFragment.CharacterListScreen())
                 }
                 R.id.bottomMenuEpisodes -> {
-
+                    navigator.launch(EpisodeListFragment.EpisodeListScreen())
                 }
                 R.id.bottomMenuLocations -> {
 
