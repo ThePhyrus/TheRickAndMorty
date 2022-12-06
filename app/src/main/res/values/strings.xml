@@ -24,5 +24,8 @@
     <string name="type">Type</string>
     <string name="origin">Origin</string>
     <string name="last_location">Last location</string>
+    <string name="episode_name">Episode name</string>
+    <string name="episode_number">Episode number</string>
+    <string name="air_date">Air date</string>
     <!-- END FROM SKELETON-->
 </resources>
