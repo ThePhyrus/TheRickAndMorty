@@ -12,7 +12,7 @@ import roman.bannikov.foundation.utils.viewModelCreator
 import roman.bannikov.foundation.views.FragmentsHolder
 import roman.bannikov.therickandmorty.R
 import roman.bannikov.therickandmorty.databinding.ActivityMainBinding
-import roman.bannikov.therickandmorty.views.fragments.LocationListFragment
+import roman.bannikov.therickandmorty.views.fragments.location.LocationListFragment
 import roman.bannikov.therickandmorty.views.fragments.character.CharacterListFragment
 import roman.bannikov.therickandmorty.views.fragments.episode.EpisodeListFragment
 

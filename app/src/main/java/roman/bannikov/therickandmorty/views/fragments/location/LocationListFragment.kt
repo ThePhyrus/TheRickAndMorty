@@ -1,4 +1,4 @@
-package roman.bannikov.therickandmorty.views.fragments
+package roman.bannikov.therickandmorty.views.fragments.location
 
 import android.os.Bundle
 import android.view.LayoutInflater
