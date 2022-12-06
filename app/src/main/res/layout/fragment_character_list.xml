@@ -36,35 +36,35 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
         android:gravity="center"
-        android:text="Fragment character"
+        android:text="Список всех персонажей:"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/svCharacter" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/srCharacters"
+        android:id="@+id/srCharacterList"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/margin"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnShowDetails"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvFragmentLabelCharacter">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCharacters"
+            android:id="@+id/rvCharacterList"
             android:layout_width="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
-            app:spanCount="2"
-            tools:listitem="@layout/item_character_card"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/srCharacters" />
+            app:layout_constraintTop_toBottomOf="@id/srCharacterList"
+            app:spanCount="2"
+            tools:listitem="@layout/item_character_card" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <ProgressBar
-        android:id="@+id/pbCharacters"
+        android:id="@+id/pbCharacterList"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -79,10 +79,10 @@
         android:id="@+id/btnShowDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="details"
-        app:layout_constraintBottom_toBottomOf="@+id/srCharacters"
-        app:layout_constraintEnd_toEndOf="@+id/pbCharacters"
-        app:layout_constraintStart_toStartOf="@+id/pbCharacters"
-        app:layout_constraintTop_toBottomOf="@+id/pbCharacters" />
+        android:text="Character details"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/srCharacterList" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

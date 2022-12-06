@@ -22,31 +22,31 @@
         android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/padding"
-        app:layout_constraintBottom_toTopOf="@id/srCharacterListOnEpisodeDetailsFragment"
+        app:layout_constraintBottom_toTopOf="@id/srLocationDetails"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tvEpisodeName"
+            android:id="@+id/tvLocationName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/episode_name" />
+            android:text="@string/location_name" />
 
         <TextView
-            android:id="@+id/tvEpisodeNumber"
+            android:id="@+id/tvLocationType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/episode_number" />
+            android:text="@string/location_type" />
 
         <TextView
-            android:id="@+id/tvAirDate"
+            android:id="@+id/tvLocationDimension"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/air_date" />
+            android:text="@string/location_dimension" />
 
     </LinearLayout>
 
@@ -54,12 +54,12 @@
         android:id="@+id/tvEpisodeDetailsTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Список персонажей в эпизоде:"
+        android:text="Список персонажей на локации:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearInfo" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/srCharacterListOnEpisodeDetailsFragment"
+        android:id="@+id/srLocationDetails"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -67,7 +67,7 @@
         app:layout_constraintTop_toBottomOf="@id/tvEpisodeDetailsTitle">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCharacterListOnEpisodeDetailsFragment"
+            android:id="@+id/rvCharacterListOnLocationDetailsFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
@@ -80,7 +80,7 @@
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <ProgressBar
-        android:id="@+id/pbLoadingCharacterListOnEpisodeDetailsFragment"
+        android:id="@+id/pdLoadingCharacterListOnLocationDetailsFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

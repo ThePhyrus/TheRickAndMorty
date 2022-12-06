@@ -7,6 +7,7 @@ import roman.bannikov.foundation.uiactions.UiActions
 import roman.bannikov.foundation.views.BaseViewModel
 import roman.bannikov.therickandmorty.R
 import roman.bannikov.therickandmorty.views.fragments.character.CharacterDetailsFragment
+import roman.bannikov.therickandmorty.views.fragments.location.LocationDetailsFragment
 
 
 class LocationListViewModel(
@@ -20,7 +21,7 @@ class LocationListViewModel(
     }
 
     fun onDetailsPressed(){
-//      navigator.launch(LocationDetailsFragment.LocationDetailsScreen(100L)) //fixme передать выброанную локацию
+      navigator.launch(LocationDetailsFragment.LocationDetailsScreen()) //fixme передать выброанную локацию
     }
 
 }

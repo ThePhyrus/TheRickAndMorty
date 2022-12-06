@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
         android:gravity="center"
-        android:text="Fragment episode"
+        android:text="Список всех эпизодов:"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/svEpisode" />
 
@@ -45,7 +45,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/margin"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnShowEpisodeDetails"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvFragmentLabelEpisode">
@@ -79,10 +79,10 @@
         android:id="@+id/btnShowEpisodeDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="details"
-        app:layout_constraintBottom_toBottomOf="@+id/srEpisodes"
-        app:layout_constraintEnd_toEndOf="@+id/pbEpisodes"
-        app:layout_constraintStart_toStartOf="@+id/pbEpisodes"
-        app:layout_constraintTop_toBottomOf="@+id/pbEpisodes" />
+        android:text="Episode details"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/srEpisodes" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

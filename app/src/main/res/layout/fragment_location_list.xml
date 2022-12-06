@@ -31,40 +31,40 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvFragmentLabelCharacter"
+        android:id="@+id/tvFragmentLabelLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin"
         android:gravity="center"
-        android:text="Fragment location"
+        android:text="Список всех локаций:"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/svLocation" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/srCharacters"
+        android:id="@+id/srLocationList"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="@dimen/margin"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btnShowLocationDetails"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvFragmentLabelCharacter">
+        app:layout_constraintTop_toBottomOf="@id/tvFragmentLabelLocation">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCharacters"
+            android:id="@+id/rvLocationList"
             android:layout_width="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
-            app:spanCount="2"
-            tools:listitem="@layout/item_character_card"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/srCharacters" />
+            app:layout_constraintTop_toBottomOf="@id/srLocationList"
+            app:spanCount="2"
+            tools:listitem="@layout/item_character_card" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <ProgressBar
-        android:id="@+id/pbCharacters"
+        android:id="@+id/pbLoadingLocationList"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,13 +76,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnShowDetails"
+        android:id="@+id/btnShowLocationDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="details"
-        app:layout_constraintBottom_toBottomOf="@+id/srCharacters"
-        app:layout_constraintEnd_toEndOf="@+id/pbCharacters"
-        app:layout_constraintStart_toStartOf="@+id/pbCharacters"
-        app:layout_constraintTop_toBottomOf="@+id/pbCharacters" />
+        android:text="Location details"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/srLocationList" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,7 +26,7 @@ class LocationListFragment:BaseFragment (){
 
 
         //todo переделать клик на карточку локации
-        binding.btnShowDetails.setOnClickListener { viewModel.onDetailsPressed() }
+        binding.btnShowLocationDetails.setOnClickListener { viewModel.onDetailsPressed() }
 
 
         return binding.root
