@@ -21,7 +21,7 @@ class LocationListViewModel(
     }
 
     fun onDetailsPressed(){
-      navigator.launch(LocationDetailsFragment.LocationDetailsScreen()) //fixme передать выброанную локацию
+      navigator.launch(LocationDetailsFragment.LocationDetailsScreen(), true) //fixme передать выброанную локацию
     }
 
 }

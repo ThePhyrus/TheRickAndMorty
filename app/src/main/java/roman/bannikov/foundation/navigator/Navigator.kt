@@ -15,7 +15,7 @@ interface Navigator {
     /**
      * Launch a new screen at the top of back stack.
      */
-    fun launch(screen: BaseScreen)
+    fun launch(screen: BaseScreen, add:Boolean)
 
     /**
      * Go back to the previous screen and optionally send some results.

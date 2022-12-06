@@ -20,7 +20,7 @@ class CharacterListViewModel(
     }
 
     fun onDetailsPressed(){
-      navigator.launch(CharacterDetailsFragment.CharacterDetailsScreen(100L)) //fixme передать выброанний персонаж
+      navigator.launch(CharacterDetailsFragment.CharacterDetailsScreen(100L), true) //fixme передать выброанний персонаж
     }
 
 }

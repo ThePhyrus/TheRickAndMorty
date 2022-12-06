@@ -18,7 +18,7 @@ class EpisodeListViewModel(
     }
 
     fun onDetailsPressed(){
-        navigator.launch(EpisodeDetailsFragment.EpisodeDetailsScreen()) //fixme передать выброанний эпизод
+        navigator.launch(EpisodeDetailsFragment.EpisodeDetailsScreen(), true) //fixme передать выброанний эпизод
     }
 
 }

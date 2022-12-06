@@ -74,13 +74,13 @@ class MainActivity : AppCompatActivity(), FragmentsHolder {
         binding.bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.bottomMenuCharacters -> {
-                    navigator.launch(CharacterListFragment.CharacterListScreen())
+                    navigator.launch(CharacterListFragment.CharacterListScreen(),false)
                 }
                 R.id.bottomMenuEpisodes -> {
-                    navigator.launch(EpisodeListFragment.EpisodeListScreen())
+                    navigator.launch(EpisodeListFragment.EpisodeListScreen(),false)
                 }
                 R.id.bottomMenuLocations -> {
-                    navigator.launch(LocationListFragment.LocationListScreen())
+                    navigator.launch(LocationListFragment.LocationListScreen(),false)
                 }
             }
             true

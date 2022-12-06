@@ -32,7 +32,6 @@ class StackFragmentNavigator(
     private val activity: AppCompatActivity,
     //чтобы знать контейнер, в который фрагменты складываться будут:
     @IdRes private val containerId: Int,
-
     private val defaultTitle: String,
     private val animations: Animations,
     //чтобы инициализировать экран при старте приложения (активити не будет выполнять лишнего):
@@ -40,12 +39,15 @@ class StackFragmentNavigator(
 ) : Navigator {
 
 
-    override fun launch(screen: BaseScreen) {
-        launchFragment(screen)//если второй аргумент не передать, что добавится в бэкстек
-    }
+/*    override fun launch(screen: BaseScreen) {
+        launchFragment(screen, false )//если второй аргумент не передать, что добавится в бэкстек
+    }*/
 
     //Сюда запишем какой-то результат из другого фрагмента (если надо будет, а пока null)
     private var result: Event<Any>? = null
+    override fun launch(screen: BaseScreen, add: Boolean) {
+        launchFragment(screen, add )//если второй аргумент не передать, что добавится в бэкстек
+    }
 
     override fun goBack(result: Any?) {
         /**
@@ -82,7 +84,7 @@ class StackFragmentNavigator(
 
 
 
-    private fun launchFragment(screen: BaseScreen, addToBackStack: Boolean = true) {
+    private fun launchFragment(screen: BaseScreen, addToBackStack: Boolean) {
         /**
          * Метод для запуска фрагментов.
          * Принимает два параметра (по умолчанию добавляет фрагменты в бэкстек:
